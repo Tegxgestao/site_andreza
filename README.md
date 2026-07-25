@@ -12,13 +12,14 @@ Site estático, sem build e sem dependências — para publicar, basta servir es
 | `palestras.html` | Introdução + formulário de palestras/treinamentos |
 | `mentoria.html` | Introdução + formulário de mentoria pessoal |
 | `agenda.html` + `agenda.js` | Agenda de eventos, mês a mês |
+| `obrigado.html` | Página de agradecimento pós-envio dos formulários |
 | `styles.css` | Todos os estilos |
 | `img/` | Fotos |
-| `completo.html/css/js` | Versão institucional completa (arquivada, não linkada) |
+| `completo.html/css/js` | Versão institucional completa (linkada pelo botão "Me Conheça") |
 
 ## Configurações pendentes
 
-- **Formulários:** trocar `contato@exemplo.com` pelo e-mail real no `action` dos formulários em `palestras.html` e `mentoria.html` (procure pelos comentários `EMAIL:`). O envio usa FormSubmit.co — no primeiro envio real, clicar no link de ativação que chega por e-mail.
+- **Formulários:** enviam para `tegxgestaoeintermediacao@gmail.com` via FormSubmit.co. No primeiro envio chega um e-mail de ativação — clicar em "Activate" uma única vez. Depois de ativado, trocar o e-mail no `action` pelo alias anônimo do FormSubmit (vem no e-mail de confirmação) para o endereço não aparecer no código-fonte da página.
 - **Agenda:** preencher as constantes no topo de `agenda.js` (`CALENDAR_ID` + `API_KEY` do Google Agenda, ou `SHEET_URL` de planilha publicada em CSV). Instruções nos comentários do próprio arquivo. Enquanto vazio, mostra eventos de exemplo.
 
 ## Atualizações
