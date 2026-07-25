@@ -19,7 +19,7 @@ Site estático, sem build e sem dependências — para publicar, basta servir es
 
 ## Configurações pendentes
 
-- **Formulários:** enviam para `tegxgestaoeintermediacao@gmail.com` via FormSubmit.co. No primeiro envio chega um e-mail de ativação — clicar em "Activate" uma única vez. Depois de ativado, trocar o e-mail no `action` pelo alias anônimo do FormSubmit (vem no e-mail de confirmação) para o endereço não aparecer no código-fonte da página.
+- **Formulários:** enviam via FormSubmit.co usando o alias anônimo no `action` — o e-mail de destino não aparece no código nem na URL. O formulário já foi ativado; se um dia trocar o e-mail de destino, será preciso ativar de novo (e-mail "Activate Form" do FormSubmit).
 - **Agenda:** preencher as constantes no topo de `agenda.js` (`CALENDAR_ID` + `API_KEY` do Google Agenda, ou `SHEET_URL` de planilha publicada em CSV). Instruções nos comentários do próprio arquivo. Enquanto vazio, mostra eventos de exemplo.
 
 ## Atualizações
