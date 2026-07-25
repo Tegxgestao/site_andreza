@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palestras &amp; Treinamentos — Andreza Frontelmo</title>
+  <meta name="description" content="Leve a Andreza Frontelmo para o seu evento ou empresa: palestras e treinamentos sobre liderança, comportamento e desenvolvimento humano.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312100D'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-style='italic' font-size='26' fill='%23D99C46' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="bio page">
+
+    <a class="back" href="index.html">&#8592; Voltar</a>
+
+    <p class="eyebrow">Palestras &amp; Treinamentos</p>
+
+    <h1 class="page-title">Leve a Andreza para o seu <em class="word-glow">evento</em></h1>
+
+    <p class="tagline">Palestras e treinamentos in-company sobre liderança, comportamento e desenvolvimento humano — sob medida para a realidade da sua empresa ou do seu público. Preencha o formulário abaixo para entender o seu contexto e montarmos a melhor estrutura.</p>
+
+    <!-- EMAIL: substituir contato@exemplo.com pelo e-mail real da Andreza (também no action do formulário).
+         O FormSubmit envia um e-mail de confirmação no primeiro envio — é preciso clicar em "Activate" uma única vez. -->
+    <form class="form" action="https://formsubmit.co/contato@exemplo.com" method="POST">
+      <input type="hidden" name="_subject" value="Novo pedido de palestra/treinamento — site">
+      <input type="hidden" name="_captcha" value="false">
+
+      <label>
+        Seu nome completo*
+        <input type="text" name="nome" required autocomplete="name">
+      </label>
+
+      <label>
+        Nome da sua empresa
+        <input type="text" name="empresa" autocomplete="organization">
+      </label>
+
+      <label>
+        Estado/Região
+        <input type="text" name="estado" autocomplete="address-level1" placeholder="ex.: São Paulo / interior de SP">
+      </label>
+
+      <label>
+        E-mail*
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+
+      <label>
+        WhatsApp / Telefone
+        <input type="tel" name="telefone" autocomplete="tel">
+      </label>
+
+      <label>
+        O que você procura?*
+        <select name="tipo" required>
+          <option value="" disabled selected>Selecione…</option>
+          <option>Palestra</option>
+          <option>Treinamento in-company</option>
+          <option>Outro</option>
+        </select>
+      </label>
+
+      <label>
+        Data prevista
+        <input type="text" name="data" placeholder="ex.: setembro/2026">
+      </label>
+
+      <label>
+        Conte um pouco sobre o evento ou a necessidade*
+        <textarea name="mensagem" rows="4" required></textarea>
+      </label>
+
+      <button class="btn btn--primary" type="submit">Enviar solicitação</button>
+    </form>
+
+    <p class="foot">Andreza Frontelmo — <wbr>Liderança · <wbr>Comportamento · <wbr>Desenvolvimento Humano</p>
+
+  </main>
+
+</body>
+</html>

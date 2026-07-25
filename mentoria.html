@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentoria Pessoal — Andreza Frontelmo</title>
+  <meta name="description" content="Mentoria pessoal com Andreza Frontelmo: acompanhamento individual em liderança, comportamento e desenvolvimento, com clareza e plano de ação.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312100D'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-style='italic' font-size='26' fill='%23D99C46' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="bio page">
+
+    <a class="back" href="index.html">&#8592; Voltar</a>
+
+    <p class="eyebrow">Mentoria Pessoal</p>
+
+    <h1 class="page-title">Evolua com <em class="word-glow">direção</em></h1>
+
+    <p class="tagline">Um acompanhamento individual com a Andreza para quem quer se desenvolver com clareza: autoconhecimento, posicionamento, liderança e um plano de ação concreto. Preencha o formulário abaixo para uma conversa inicial.</p>
+
+    <!-- EMAIL: substituir contato@exemplo.com pelo e-mail real da Andreza (também no action do formulário).
+         O FormSubmit envia um e-mail de confirmação no primeiro envio — é preciso clicar em "Activate" uma única vez. -->
+    <form class="form" action="https://formsubmit.co/contato@exemplo.com" method="POST">
+      <input type="hidden" name="_subject" value="Novo pedido de mentoria pessoal — site">
+      <input type="hidden" name="_captcha" value="false">
+
+      <label>
+        Seu nome completo*
+        <input type="text" name="nome" required autocomplete="name">
+      </label>
+
+      <label>
+        E-mail*
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+
+      <label>
+        WhatsApp / Telefone
+        <input type="tel" name="telefone" autocomplete="tel">
+      </label>
+
+      <label>
+        O que você busca?*
+        <select name="objetivo" required>
+          <option value="" disabled selected>Selecione…</option>
+          <option>Desenvolver minha liderança</option>
+          <option>Transição de carreira</option>
+          <option>Autoconhecimento e clareza</option>
+          <option>Outro</option>
+        </select>
+      </label>
+
+      <label>
+        Conte um pouco sobre você e o seu objetivo*
+        <textarea name="mensagem" rows="4" required></textarea>
+      </label>
+
+      <button class="btn btn--primary" type="submit">Enviar solicitação</button>
+    </form>
+
+    <p class="foot">Andreza Frontelmo — <wbr>Liderança · <wbr>Comportamento · <wbr>Desenvolvimento Humano</p>
+
+  </main>
+
+</body>
+</html>
