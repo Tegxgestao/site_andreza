@@ -94,7 +94,7 @@ function render(eventos) {
   if (!futuros.length) {
     const vazio = el("div", "agenda-empty");
     vazio.append(el("p", "", "Nenhum evento público confirmado no momento."));
-    const cta = el("a", "btn btn--primary", "Leve a Andreza para o seu evento");
+    const cta = el("a", "btn", "Leve a Andreza para o seu evento");
     cta.href = "palestras.html";
     vazio.append(cta);
     container.append(vazio);

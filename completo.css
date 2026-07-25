@@ -103,8 +103,9 @@ a { color: inherit; }
   justify-content: center;
   min-height: 3.25rem;
   padding: 0.9rem 2rem;
-  background: var(--accent);
-  color: var(--bg-dark);
+  background: transparent;
+  color: inherit;
+  border: 1.5px solid var(--accent);
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
@@ -112,7 +113,7 @@ a { color: inherit; }
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 85, 0, 0.35); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 85, 0, 0.25); }
 
 .btn:focus-visible,
 a:focus-visible,
