@@ -116,8 +116,7 @@ a { color: inherit; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 85, 0, 0.25); }
 
 .btn:focus-visible,
-a:focus-visible,
-.nav-toggle:focus-visible {
+a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
@@ -159,32 +158,37 @@ a:focus-visible,
 
 .brand em { font-style: italic; color: var(--gold); }
 
-.nav-toggle {
-  position: relative;
-  z-index: 60;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  flex-direction: column;
+.header-back {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.header-back:hover { color: var(--gold); }
+
+.hero-back {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.4rem;
+  z-index: 5;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.3rem 1.1rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 999px;
+  background: rgba(18, 16, 13, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text-light);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hero-back:hover { color: var(--gold); }
 
 .nav-menu {
   position: fixed;
@@ -380,7 +384,7 @@ body.no-scroll { overflow: hidden; }
 
 /* ---------- Rodapé ---------- */
 
-.footer { padding: clamp(4.5rem, 12vw, 7rem) 1.4rem 2.5rem; }
+.footer { padding: 2.5rem 1.4rem; }
 
 .contact-actions {
   display: flex;
@@ -423,8 +427,6 @@ body.no-scroll { overflow: hidden; }
 /* ---------- Desktop ≥ 900px ---------- */
 
 @media (min-width: 900px) {
-  .nav-toggle { display: none; }
-
   .nav-menu {
     position: static;
     background: none;
