@@ -1,17 +1,22 @@
 /* ============================================================
-   Andreza Frontelmo — styles.css (formato enxuto / link-in-bio)
+   Andreza Frontelmo — styles.css
+   Identidade do media kit: fundo claro com grade sutil,
+   laranja em degradê até tijolo, títulos Archivo em caixa alta.
    ============================================================ */
 
 :root {
-  --bg-dark: #12100D;
-  --surface-dark: #1C1813;
-  --accent: #FF5500;
-  --gold: #D99C46;
-  --text-light: #F5EFE6;
-  --text-muted-light: #C7BBA8;
-  --font-display: "Fraunces", Georgia, serif;
+  --laranja: #EE7420;
+  --laranja-claro: #F5913B;
+  --tijolo: #C13A1B;
+  --carvao: #14110D;
+  --papel: #FDFBF8;
+  --superficie: #FFFFFF;
+  --texto: #2A241E;
+  --texto-suave: #7C7166;
+  --linha-grade: rgba(238, 116, 32, 0.08);
+  --grad-marca: linear-gradient(135deg, #F5913B 0%, #E2571E 55%, #C13A1B 100%);
+  --font-display: "Archivo", "Arial Black", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --grad-warm: linear-gradient(100deg, #D99C46 10%, #FF5500 90%);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,10 +25,12 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-light);
-  background:
-    radial-gradient(90% 50% at 50% 0%, rgba(217, 156, 70, 0.10) 0%, rgba(18, 16, 13, 0) 65%),
-    var(--bg-dark);
+  color: var(--texto);
+  background-color: var(--papel);
+  background-image:
+    linear-gradient(var(--linha-grade) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linha-grade) 1px, transparent 1px);
+  background-size: 96px 96px;
   -webkit-font-smoothing: antialiased;
   min-height: 100svh;
 }
@@ -33,10 +40,10 @@ img { max-width: 100%; display: block; }
 /* ---------- Coluna central ---------- */
 
 .bio {
-  max-width: 430px;
+  max-width: 440px;
   min-height: 100svh;
   margin: 0 auto;
-  padding: clamp(2.5rem, 8vw, 4rem) 1.4rem 2.5rem;
+  padding: clamp(1.4rem, 5vw, 2.5rem) 1.4rem 2.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -44,66 +51,94 @@ img { max-width: 100%; display: block; }
   justify-content: center;
 }
 
-/* ---------- Foto em arco ---------- */
+/* ---------- Capa (foto do media kit) ---------- */
 
-.bio-photo {
-  width: min(210px, 58vw);
-  aspect-ratio: 4 / 5;
-  border-radius: 999px 999px 20px 20px;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 1.6rem;
-}
-
-.bio-photo img {
+.hero-card {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 58% 12%;
-  filter: saturate(0.85);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(130% 100% at 15% 0%, #262019 0%, #0E0C09 62%),
+    #0E0C09;
+  border: 1px solid rgba(238, 116, 32, 0.4);
+  border-radius: 26px;
+  padding: 1.9rem 1.5rem 0;
 }
 
-.bio-photo::after {
+.hero-card::before {
+  content: "A";
+  position: absolute;
+  top: -0.28em;
+  right: -0.06em;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 10.5rem;
+  line-height: 1;
+  color: rgba(238, 116, 32, 0.16);
+  pointer-events: none;
+}
+
+.hero-card::after {
   content: "";
   position: absolute;
-  inset: 0;
-  border: 1px solid rgba(217, 156, 70, 0.55);
-  border-radius: 999px 999px 20px 20px;
-  pointer-events: none;
+  inset: auto 0 0 0;
+  height: 5px;
+  background: var(--grad-marca);
+}
+
+.hero-text { position: relative; z-index: 1; }
+
+.hero-card .eyebrow { color: var(--laranja-claro); }
+
+.hero-card h1 { color: #FFFFFF; }
+
+.hero-card .tagline {
+  color: #D8CEC3;
+  font-size: 0.95rem;
+  max-width: 30ch;
+  margin: 0.8rem auto 0;
+}
+
+.hero-foto {
+  position: relative;
+  z-index: 0;
+  width: min(250px, 66vw);
+  margin: 0.4rem auto 0;
 }
 
 /* ---------- Identidade ---------- */
 
 .eyebrow {
-  font-size: 0.66rem;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--accent);
+  letter-spacing: 0.16em;
+  color: var(--laranja);
   margin-bottom: 0.7rem;
 }
 
 h1 {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.1rem, 9vw, 2.7rem);
-  line-height: 1.1;
+  font-weight: 800;
+  font-size: clamp(2rem, 8.6vw, 2.55rem);
+  line-height: 1.06;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
-h1 em { font-style: italic; color: var(--accent); }
+h1 em { font-style: normal; color: var(--laranja); }
 
 .tagline {
-  font-size: 1.02rem;
-  color: var(--text-light);
-  max-width: 32ch;
+  font-size: 1rem;
+  color: var(--texto);
+  max-width: 34ch;
   margin: 0.9rem auto 0;
 }
 
 .word-glow {
-  font-style: italic;
-  font-weight: 600;
-  color: var(--accent);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--laranja);
 }
 
 /* ---------- Pilha de botões ---------- */
@@ -112,8 +147,8 @@ h1 em { font-style: italic; color: var(--accent); }
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  margin-top: 2.2rem;
+  gap: 0.85rem;
+  margin-top: 1.7rem;
 }
 
 .btn {
@@ -128,22 +163,22 @@ h1 em { font-style: italic; color: var(--accent); }
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  background: var(--surface-dark);
-  color: var(--text-light);
-  border: 1.5px solid var(--accent);
+  background: var(--superficie);
+  color: var(--texto);
+  border: 1.5px solid var(--laranja);
   border-radius: 999px;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.btn svg { flex-shrink: 0; color: var(--gold); }
+.btn svg { flex-shrink: 0; color: var(--laranja); }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 85, 0, 0.25);
+  box-shadow: 0 8px 22px rgba(238, 116, 32, 0.28);
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--laranja);
   outline-offset: 3px;
 }
 
@@ -155,7 +190,7 @@ h1 em { font-style: italic; color: var(--accent); }
   .btn--instagram { display: flex; }
 }
 
-/* ---------- Página interna (palestras) ---------- */
+/* ---------- Página interna ---------- */
 
 .back {
   align-self: flex-start;
@@ -163,15 +198,16 @@ h1 em { font-style: italic; color: var(--accent); }
   align-items: center;
   gap: 0.4rem;
   min-height: 44px;
-  color: var(--accent);
+  color: var(--laranja);
   text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 600;
   margin-bottom: 1.2rem;
 }
 
-.back:hover { color: var(--gold); }
+.back:hover { color: var(--tijolo); }
 
-.page-title { font-size: clamp(1.9rem, 8vw, 2.4rem); max-width: 16ch; margin: 0 auto; }
+.page-title { font-size: clamp(1.75rem, 7.4vw, 2.2rem); max-width: 18ch; margin: 0 auto; }
 
 .form {
   width: 100%;
@@ -187,8 +223,8 @@ h1 em { font-style: italic; color: var(--accent); }
   flex-direction: column;
   gap: 0.45rem;
   font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-light);
+  font-weight: 600;
+  color: var(--texto);
 }
 
 .form input,
@@ -196,9 +232,9 @@ h1 em { font-style: italic; color: var(--accent); }
 .form textarea {
   font-family: inherit;
   font-size: 1rem;
-  color: var(--text-light);
-  background: var(--surface-dark);
-  border: 1px solid rgba(217, 156, 70, 0.4);
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid rgba(238, 116, 32, 0.45);
   border-radius: 12px;
   padding: 0.85rem 1rem;
   width: 100%;
@@ -206,17 +242,17 @@ h1 em { font-style: italic; color: var(--accent); }
 
 .form textarea { resize: vertical; min-height: 7rem; }
 
-.form ::placeholder { color: var(--text-muted-light); opacity: 0.7; }
+.form ::placeholder { color: var(--texto-suave); opacity: 0.8; }
 
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--laranja);
   outline-offset: 2px;
-  border-color: var(--gold);
+  border-color: var(--laranja);
 }
 
-.form select:invalid { color: var(--text-muted-light); }
+.form select:invalid { color: var(--texto-suave); }
 
 .form .btn { cursor: pointer; margin-top: 0.4rem; }
 
@@ -230,18 +266,20 @@ h1 em { font-style: italic; color: var(--accent); }
 
 .agenda-loading {
   text-align: center;
-  color: var(--text-muted-light);
+  color: var(--texto-suave);
 }
 
 .month { margin-bottom: 2.2rem; }
 
 .month h2 {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.35rem;
-  color: var(--text-light);
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--texto);
   padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(217, 156, 70, 0.35);
+  border-bottom: 2px solid var(--laranja);
   margin-bottom: 1rem;
 }
 
@@ -255,8 +293,8 @@ h1 em { font-style: italic; color: var(--accent); }
   display: flex;
   align-items: center;
   gap: 1.1rem;
-  background: var(--surface-dark);
-  border: 1px solid rgba(217, 156, 70, 0.25);
+  background: var(--superficie);
+  border: 1px solid rgba(238, 116, 32, 0.35);
   border-radius: 14px;
   padding: 1rem 1.15rem;
 }
@@ -271,10 +309,10 @@ h1 em { font-style: italic; color: var(--accent); }
 
 .event-day {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 800;
   font-size: 1.75rem;
   line-height: 1.1;
-  color: var(--accent);
+  color: var(--laranja);
 }
 
 .event-wd {
@@ -282,7 +320,7 @@ h1 em { font-style: italic; color: var(--accent); }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted-light);
+  color: var(--texto-suave);
 }
 
 .event-info h3 {
@@ -290,12 +328,12 @@ h1 em { font-style: italic; color: var(--accent); }
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.4;
-  color: var(--text-light);
+  color: var(--texto);
 }
 
 .event-info p {
   font-size: 0.86rem;
-  color: var(--text-muted-light);
+  color: var(--texto-suave);
   margin-top: 0.2rem;
 }
 
@@ -308,15 +346,18 @@ h1 em { font-style: italic; color: var(--accent); }
   gap: 1.5rem;
   text-align: center;
   padding: 1.5rem 0;
-  color: var(--text-muted-light);
+  color: var(--texto-suave);
 }
 
 /* ---------- Rodapé ---------- */
 
 .foot {
-  font-size: 0.74rem;
-  color: var(--text-muted-light);
-  margin-top: 2.6rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-suave);
+  margin-top: 2.4rem;
 }
 
 /* ---------- Entrada (CSS puro) ---------- */
