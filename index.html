@@ -17,18 +17,7 @@
 
   <!-- Tema do dia: os três designs aprovados se revezam, um por dia,
        virando à meia-noite de Brasília. ?tema=noturno|minimal|palco força um. -->
-  <script>
-    (function () {
-      var temas = ["noturno", "minimal", "palco"];
-      var forcado = new URLSearchParams(location.search).get("tema");
-      if (temas.indexOf(forcado) !== -1) {
-        document.documentElement.dataset.tema = forcado;
-        return;
-      }
-      var dia = Math.floor(Date.now() / 864e5 - 3 / 24); /* dias corridos, UTC-3 */
-      document.documentElement.dataset.tema = temas[((dia % 3) + 3) % 3];
-    })();
-  </script>
+  <script src="tema.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +25,7 @@
        os arquivos de fonte que o tema ativo realmente usa -->
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 

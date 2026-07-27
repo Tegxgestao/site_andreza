@@ -1,173 +1,87 @@
 /* ============================================================
    Andreza Frontelmo — styles.css
-   Identidade do media kit: fundo claro com grade sutil,
-   laranja em degradê até tijolo, títulos Archivo em caixa alta.
+   Todo o site (home + páginas internas) com 3 temas que se
+   revezam por dia (tema.js define data-tema no <html>):
+     noturno  — escuro, Fraunces serifada, dourado, retrato em arco
+     minimal  — claro, Space Grotesk, lista com setas
+     palco    — pôster escuro, Anton, foto de palestra
+   Sem JS vale o tema padrão escrito no HTML (noturno).
+   ?tema=noturno|minimal|palco força um tema.
+   completo.html tem design próprio (completo.css) e não gira.
    ============================================================ */
 
 :root {
-  --laranja: #EE7420;
-  --laranja-claro: #F5913B;
-  --tijolo: #C13A1B;
-  --carvao: #14110D;
-  --papel: #FDFBF8;
-  --superficie: #FFFFFF;
-  --texto: #2A241E;
-  --texto-suave: #7C7166;
-  --linha-grade: rgba(238, 116, 32, 0.08);
-  --grad-marca: linear-gradient(135deg, #F5913B 0%, #E2571E 55%, #C13A1B 100%);
-  --font-display: "Archivo", "Arial Black", sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --laranja: #FF5500;
+}
+
+/* Tokens por tema (campos de formulário, cartões, detalhes) */
+
+[data-tema="noturno"] {
+  color-scheme: dark;
+  --t-texto: #F5EFE3;
+  --t-suave: #B9AE9C;
+  --t-superficie: rgba(255, 255, 255, 0.04);
+  --t-borda: rgba(217, 168, 92, 0.38);
+  --t-destaque: #D9A85C;
+  --t-radius: 12px;
+  --t-radius-cartao: 16px;
+}
+
+[data-tema="minimal"] {
+  color-scheme: light;
+  --t-texto: #131210;
+  --t-suave: #6E675E;
+  --t-superficie: #FFFFFF;
+  --t-borda: #D8D3CA;
+  --t-destaque: #131210;
+  --t-radius: 0;
+  --t-radius-cartao: 0;
+}
+
+[data-tema="palco"] {
+  color-scheme: dark;
+  --t-texto: #FFFFFF;
+  --t-suave: #B8AEA2;
+  --t-superficie: #18130E;
+  --t-borda: rgba(255, 85, 0, 0.4);
+  --t-destaque: #FF7A33;
+  --t-radius: 10px;
+  --t-radius-cartao: 12px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--texto);
-  background-color: var(--papel);
-  background-image:
-    linear-gradient(var(--linha-grade) 1px, transparent 1px),
-    linear-gradient(90deg, var(--linha-grade) 1px, transparent 1px);
-  background-size: 96px 96px;
+  font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100svh;
 }
 
 img { max-width: 100%; display: block; }
 
-/* ---------- Coluna central ---------- */
-
 .bio {
-  max-width: 440px;
   min-height: 100svh;
   margin: 0 auto;
-  padding: clamp(1.4rem, 5vw, 2.5rem) 1.4rem 2.5rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
-
-/* ---------- Capa (foto do media kit) ---------- */
-
-.hero-card {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(130% 100% at 15% 0%, #262019 0%, #0E0C09 62%),
-    #0E0C09;
-  border: 1px solid rgba(238, 116, 32, 0.4);
-  border-radius: 26px;
-  padding: 2.1rem 1.5rem 2.3rem;
-}
-
-.hero-card::before {
-  content: "A";
-  position: absolute;
-  top: -0.28em;
-  right: -0.06em;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 10.5rem;
-  line-height: 1;
-  color: rgba(238, 116, 32, 0.16);
-  pointer-events: none;
-}
-
-.hero-card::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 5px;
-  background: var(--grad-marca);
-}
-
-.hero-text { position: relative; z-index: 1; }
-
-.hero-card .eyebrow { color: var(--laranja-claro); }
-
-.hero-card h1 { color: #FFFFFF; }
-
-.hero-card .tagline {
-  color: #D8CEC3;
-  font-size: 0.95rem;
-  max-width: 30ch;
-  margin: 0.8rem auto 0;
-}
-
-/* ---------- Identidade ---------- */
-
-.eyebrow {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--laranja);
-  margin-bottom: 0.7rem;
-}
-
-h1 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 8.6vw, 2.55rem);
-  line-height: 1.06;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-}
-
-h1 em { font-style: normal; color: var(--laranja); }
-
-.tagline {
-  font-size: 1rem;
-  color: var(--texto);
-  max-width: 34ch;
-  margin: 0.9rem auto 0;
-}
-
-.word-glow {
-  font-style: normal;
-  font-weight: 700;
-  color: var(--laranja);
-}
-
-/* ---------- Pilha de botões ---------- */
 
 .links {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-top: 1.7rem;
 }
 
 .btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
   width: 100%;
-  min-height: 3.5rem;
-  padding: 0.9rem 1.4rem;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 600;
   text-decoration: none;
-  background: var(--superficie);
-  color: var(--texto);
-  border: 1.5px solid var(--laranja);
-  border-radius: 999px;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-.btn svg { flex-shrink: 0; color: var(--laranja); }
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(238, 116, 32, 0.28);
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease,
+    background-color 0.18s ease, box-shadow 0.18s ease,
+    color 0.18s ease, padding 0.2s ease;
 }
 
 .btn:focus-visible {
@@ -175,15 +89,24 @@ h1 em { font-style: normal; color: var(--laranja); }
   outline-offset: 3px;
 }
 
-/* Só aparece em computador (mouse/cursor fino); no celular — inclusive
-   no navegador interno do Instagram — fica oculto */
+/* Elementos que só existem em alguns temas — cada tema liga os seus */
+.arco,
+.hero,
+.icone,
+.seta,
+.ponto,
+.so-minimal,
+.foot .ig { display: none; }
+
+/* Instagram só em computador (mouse/cursor fino); oculto em qualquer
+   dispositivo de toque, inclusive o navegador interno do Instagram */
 .btn--instagram { display: none; }
 
 @media (hover: hover) and (pointer: fine) {
   .btn--instagram { display: flex; }
 }
 
-/* ---------- Página interna ---------- */
+/* ---------- Páginas internas: partes comuns ---------- */
 
 .back {
   align-self: flex-start;
@@ -191,16 +114,14 @@ h1 em { font-style: normal; color: var(--laranja); }
   align-items: center;
   gap: 0.4rem;
   min-height: 44px;
-  color: var(--laranja);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
+  color: var(--t-destaque);
   margin-bottom: 1.2rem;
 }
 
-.back:hover { color: var(--tijolo); }
-
-.page-title { font-size: clamp(1.75rem, 7.4vw, 2.2rem); max-width: 18ch; margin: 0 auto; }
+.back:hover { text-decoration: underline; }
 
 .form {
   width: 100%;
@@ -217,7 +138,7 @@ h1 em { font-style: normal; color: var(--laranja); }
   gap: 0.45rem;
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--texto);
+  color: var(--t-texto);
 }
 
 .form input,
@@ -225,17 +146,17 @@ h1 em { font-style: normal; color: var(--laranja); }
 .form textarea {
   font-family: inherit;
   font-size: 1rem;
-  color: var(--texto);
-  background: var(--superficie);
-  border: 1px solid rgba(238, 116, 32, 0.45);
-  border-radius: 12px;
+  color: var(--t-texto);
+  background: var(--t-superficie);
+  border: 1px solid var(--t-borda);
+  border-radius: var(--t-radius);
   padding: 0.85rem 1rem;
   width: 100%;
 }
 
 .form textarea { resize: vertical; min-height: 7rem; }
 
-.form ::placeholder { color: var(--texto-suave); opacity: 0.8; }
+.form ::placeholder { color: var(--t-suave); opacity: 0.8; }
 
 .form input:focus,
 .form select:focus,
@@ -245,11 +166,11 @@ h1 em { font-style: normal; color: var(--laranja); }
   border-color: var(--laranja);
 }
 
-.form select:invalid { color: var(--texto-suave); }
+.form select:invalid { color: var(--t-suave); }
 
-.form .btn { cursor: pointer; margin-top: 0.4rem; }
+.form .btn { margin-top: 0.4rem; }
 
-/* ---------- Agenda ---------- */
+/* ---------- Agenda: partes comuns ---------- */
 
 .agenda {
   width: 100%;
@@ -259,20 +180,14 @@ h1 em { font-style: normal; color: var(--laranja); }
 
 .agenda-loading {
   text-align: center;
-  color: var(--texto-suave);
+  color: var(--t-suave);
 }
 
 .month { margin-bottom: 2.2rem; }
 
 .month h2 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  color: var(--texto);
+  color: var(--t-texto);
   padding-bottom: 0.6rem;
-  border-bottom: 2px solid var(--laranja);
   margin-bottom: 1rem;
 }
 
@@ -286,9 +201,9 @@ h1 em { font-style: normal; color: var(--laranja); }
   display: flex;
   align-items: center;
   gap: 1.1rem;
-  background: var(--superficie);
-  border: 1px solid rgba(238, 116, 32, 0.35);
-  border-radius: 14px;
+  background: var(--t-superficie);
+  border: 1px solid var(--t-borda);
+  border-radius: var(--t-radius-cartao);
   padding: 1rem 1.15rem;
 }
 
@@ -300,33 +215,25 @@ h1 em { font-style: normal; color: var(--laranja); }
   flex-shrink: 0;
 }
 
-.event-day {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.75rem;
-  line-height: 1.1;
-  color: var(--laranja);
-}
-
 .event-wd {
   font-size: 0.68rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--texto-suave);
+  color: var(--t-suave);
 }
 
 .event-info h3 {
-  font-family: var(--font-body);
+  font-family: "Inter", system-ui, sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.4;
-  color: var(--texto);
+  color: var(--t-texto);
 }
 
 .event-info p {
   font-size: 0.86rem;
-  color: var(--texto-suave);
+  color: var(--t-suave);
   margin-top: 0.2rem;
 }
 
@@ -339,18 +246,7 @@ h1 em { font-style: normal; color: var(--laranja); }
   gap: 1.5rem;
   text-align: center;
   padding: 1.5rem 0;
-  color: var(--texto-suave);
-}
-
-/* ---------- Rodapé ---------- */
-
-.foot {
-  font-size: 0.72rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--texto-suave);
-  margin-top: 2.4rem;
+  color: var(--t-suave);
 }
 
 /* ---------- Entrada (CSS puro) ---------- */
@@ -361,17 +257,581 @@ h1 em { font-style: normal; color: var(--laranja); }
 }
 
 .bio > * { animation: rise 0.55s ease both; }
-
 .bio > *:nth-child(1) { animation-delay: 0.05s; }
-.bio > *:nth-child(2) { animation-delay: 0.15s; }
-.bio > *:nth-child(3) { animation-delay: 0.22s; }
-.bio > *:nth-child(4) { animation-delay: 0.3s; }
-.bio > *:nth-child(5) { animation-delay: 0.4s; }
-.bio > *:nth-child(6) { animation-delay: 0.5s; }
+.bio > *:nth-child(2) { animation-delay: 0.1s; }
+.bio > *:nth-child(3) { animation-delay: 0.16s; }
+.bio > *:nth-child(4) { animation-delay: 0.24s; }
+.bio > *:nth-child(5) { animation-delay: 0.32s; }
+.bio > *:nth-child(6) { animation-delay: 0.42s; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ============================================================
+   TEMA 1 — NOTURNO (editorial escuro, dourado, retrato em arco)
+   ============================================================ */
+
+[data-tema="noturno"] body {
+  color: #F5EFE3;
+  background:
+    radial-gradient(90% 55% at 50% 0%, #262017 0%, rgba(38, 32, 23, 0) 70%),
+    #131009;
+}
+
+[data-tema="noturno"] .bio {
+  max-width: 430px;
+  padding: clamp(1.6rem, 5vw, 2.6rem) 1.5rem 2.2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-tema="noturno"] .arco {
+  display: block;
+  position: relative;
+  width: min(46vw, 172px);
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 14px 14px;
+  padding: 7px;
+  border: 1px solid rgba(217, 168, 92, 0.55);
+}
+
+[data-tema="noturno"] .arco img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  border-radius: inherit;
+  filter: saturate(0.92);
+}
+
+[data-tema="noturno"] .arco::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: inherit;
+  background: radial-gradient(60% 45% at 50% 20%, rgba(217, 168, 92, 0.18) 0%, rgba(217, 168, 92, 0) 70%);
+  pointer-events: none;
+}
+
+[data-tema="noturno"] .titulo { margin-top: 1.5rem; }
+
+[data-tema="noturno"] .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 0.66rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: #D9A85C;
+  white-space: nowrap;
+}
+
+[data-tema="noturno"] .eyebrow::before,
+[data-tema="noturno"] .eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 2rem;
+  background: linear-gradient(90deg, rgba(217, 168, 92, 0) 0%, rgba(217, 168, 92, 0.6) 100%);
+}
+
+[data-tema="noturno"] .eyebrow::after {
+  background: linear-gradient(90deg, rgba(217, 168, 92, 0.6) 0%, rgba(217, 168, 92, 0) 100%);
+}
+
+[data-tema="noturno"] h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.35rem, 10vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: 0.005em;
+  margin-top: 0.55rem;
+  color: #FFFFFF;
+}
+
+[data-tema="noturno"] h1 .sobrenome {
+  font-style: italic;
+  font-weight: 400;
+  color: #E8C289;
+}
+
+[data-tema="noturno"] .page-title {
+  font-size: clamp(1.95rem, 8.5vw, 2.5rem);
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-tema="noturno"] .word-glow {
+  font-style: italic;
+  font-weight: 400;
+  color: #E8C289;
+}
+
+[data-tema="noturno"] .tagline {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #B9AE9C;
+  max-width: 30ch;
+  margin: 0.9rem auto 0;
+}
+
+[data-tema="noturno"] .tagline strong {
+  font-weight: 500;
+  color: #F5EFE3;
+}
+
+[data-tema="noturno"] .links {
+  gap: 0.8rem;
+  margin-top: 1.9rem;
+}
+
+[data-tema="noturno"] .btn {
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 3.4rem;
+  padding: 0.9rem 1.4rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #F5EFE3;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(217, 168, 92, 0.38);
+  border-radius: 999px;
+}
+
+[data-tema="noturno"] .btn .icone {
+  display: block;
+  flex-shrink: 0;
+  color: #D9A85C;
+}
+
+[data-tema="noturno"] .btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 168, 92, 0.8);
+  background: rgba(217, 168, 92, 0.07);
+}
+
+[data-tema="noturno"] .btn--primario,
+[data-tema="noturno"] .form .btn,
+[data-tema="noturno"] .agenda-empty .btn {
+  background: var(--laranja);
+  border-color: var(--laranja);
+  color: #180B02;
+  font-weight: 600;
+}
+
+[data-tema="noturno"] .btn--primario .icone { color: #180B02; }
+
+[data-tema="noturno"] .btn--primario:hover,
+[data-tema="noturno"] .form .btn:hover,
+[data-tema="noturno"] .agenda-empty .btn:hover {
+  background: #FF6A1F;
+  border-color: #FF6A1F;
+  box-shadow: 0 10px 28px rgba(255, 85, 0, 0.32);
+}
+
+[data-tema="noturno"] .month h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.35rem;
+  border-bottom: 1px solid rgba(217, 168, 92, 0.45);
+}
+
+[data-tema="noturno"] .event-day {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  color: #D9A85C;
+}
+
+[data-tema="noturno"] .foot {
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(185, 174, 156, 0.6);
+  margin-top: 2.2rem;
+}
+
+/* ============================================================
+   TEMA 2 — MINIMAL (claro, tipográfico, lista com setas)
+   ============================================================ */
+
+[data-tema="minimal"] body {
+  color: #131210;
+  background: #F7F5F1;
+}
+
+[data-tema="minimal"] .bio {
+  max-width: 460px;
+  padding: clamp(1.8rem, 6vw, 3rem) 1.5rem 2rem;
+  justify-content: center;
+  text-align: left;
+}
+
+[data-tema="minimal"] .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #6E675E;
+}
+
+[data-tema="minimal"] .eyebrow::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--laranja);
+  flex-shrink: 0;
+}
+
+[data-tema="minimal"] .so-minimal { display: inline; }
+
+[data-tema="minimal"] h1 {
+  font-family: "Space Grotesk", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.7rem, 12.5vw, 3.7rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-top: 1.1rem;
+}
+
+[data-tema="minimal"] h1 .nome,
+[data-tema="minimal"] h1 .sobrenome { display: block; }
+
+[data-tema="minimal"] h1 .ponto {
+  display: inline;
+  color: var(--laranja);
+}
+
+[data-tema="minimal"] .page-title {
+  font-size: clamp(2.1rem, 9.5vw, 2.7rem);
+  line-height: 1.04;
+}
+
+[data-tema="minimal"] .word-glow {
+  font-style: normal;
+  color: var(--laranja);
+}
+
+[data-tema="minimal"] .tagline {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #6E675E;
+  max-width: 32ch;
+  margin-top: 1.15rem;
+}
+
+[data-tema="minimal"] .tagline strong {
+  font-weight: 600;
+  color: #131210;
+}
+
+[data-tema="minimal"] .links {
+  margin-top: 2.1rem;
+  border-top: 1px solid #D8D3CA;
+}
+
+[data-tema="minimal"] .btn {
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.7rem;
+  padding: 1rem 0.35rem;
+  font-family: "Space Grotesk", "Arial", sans-serif;
+  font-size: 1.06rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #131210;
+  border-bottom: 1px solid #D8D3CA;
+}
+
+[data-tema="minimal"] .btn .seta {
+  display: inline;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  color: var(--laranja);
+  transition: transform 0.2s ease;
+}
+
+[data-tema="minimal"] .btn:hover {
+  background: #131210;
+  color: #F7F5F1;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+[data-tema="minimal"] .btn:hover .seta { transform: translateX(4px); }
+
+[data-tema="minimal"] .btn:focus-visible { outline-offset: -3px; }
+
+[data-tema="minimal"] .btn--primario {
+  background: var(--laranja);
+  color: #1A0D02;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+[data-tema="minimal"] .btn--primario .seta { color: #1A0D02; }
+
+[data-tema="minimal"] .btn--primario:hover {
+  background: #E64D00;
+  color: #1A0D02;
+}
+
+[data-tema="minimal"] .form .btn,
+[data-tema="minimal"] .agenda-empty .btn {
+  justify-content: center;
+  min-height: 3.6rem;
+  padding: 1rem;
+  background: var(--laranja);
+  color: #1A0D02;
+  border: 0;
+}
+
+[data-tema="minimal"] .form .btn:hover,
+[data-tema="minimal"] .agenda-empty .btn:hover {
+  background: #E64D00;
+  color: #1A0D02;
+}
+
+[data-tema="minimal"] .month h2 {
+  font-family: "Space Grotesk", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid #D8D3CA;
+}
+
+[data-tema="minimal"] .events { gap: 0; }
+
+[data-tema="minimal"] .event {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #D8D3CA;
+  border-radius: 0;
+  padding: 1rem 0.2rem;
+}
+
+[data-tema="minimal"] .event-day {
+  font-family: "Space Grotesk", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  color: var(--laranja);
+}
+
+[data-tema="minimal"] .foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #6E675E;
+  margin-top: 2.3rem;
+}
+
+[data-tema="minimal"] .foot .ig {
+  display: inline;
+  color: #131210;
+  text-decoration: none;
+}
+
+[data-tema="minimal"] .foot .ig:hover { color: var(--laranja); }
+
+/* ============================================================
+   TEMA 3 — PALCO (pôster escuro, Anton, foto de palestra)
+   ============================================================ */
+
+[data-tema="palco"] body {
+  color: #FFFFFF;
+  background:
+    radial-gradient(70% 40% at 15% 100%, rgba(255, 85, 0, 0.14) 0%, rgba(255, 85, 0, 0) 70%),
+    #0C0A08;
+}
+
+[data-tema="palco"] .bio {
+  max-width: 440px;
+  padding: 0 1.5rem 2rem;
+  justify-content: flex-end;
+}
+
+/* Páginas internas não têm a foto de palco: fluxo normal, com respiro no topo */
+[data-tema="palco"] .bio.page {
+  justify-content: center;
+  padding: clamp(1.6rem, 5vw, 2.6rem) 1.5rem 2rem;
+}
+
+[data-tema="palco"] .hero {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: clamp(230px, 34svh, 320px);
+  flex-shrink: 0;
+}
+
+[data-tema="palco"] .hero img {
+  position: absolute;
+  top: 0;
+  right: -12%;
+  height: 118%;
+  max-width: none;
+  mix-blend-mode: lighten;
+  filter: saturate(1.05);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 96%);
+  mask-image: linear-gradient(180deg, #000 55%, transparent 96%);
+}
+
+[data-tema="palco"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: -1.5rem -100vw 0;
+  background: radial-gradient(75% 90% at 70% 15%, rgba(255, 85, 0, 0.16) 0%, rgba(255, 85, 0, 0) 65%);
+  pointer-events: none;
+}
+
+[data-tema="palco"] .titulo {
+  position: relative;
+  z-index: 1;
+  margin-top: -2.4rem;
+}
+
+[data-tema="palco"] .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #FF7A33;
+}
+
+[data-tema="palco"] .eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 3px;
+  background: var(--laranja);
+  flex-shrink: 0;
+}
+
+[data-tema="palco"] h1 {
+  font-family: "Anton", "Arial Black", sans-serif;
+  font-weight: 400;
+  font-size: clamp(3.1rem, 15.5vw, 4.3rem);
+  line-height: 0.95;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+  margin-top: 0.6rem;
+  text-shadow: 0 4px 30px rgba(12, 10, 8, 0.85);
+}
+
+[data-tema="palco"] h1 .nome,
+[data-tema="palco"] h1 .sobrenome { display: block; }
+
+[data-tema="palco"] h1 .sobrenome { color: var(--laranja); }
+
+[data-tema="palco"] .page-title {
+  font-size: clamp(2.1rem, 9.5vw, 2.9rem);
+  line-height: 1.02;
+  text-shadow: none;
+}
+
+[data-tema="palco"] .word-glow {
+  font-style: normal;
+  color: var(--laranja);
+}
+
+[data-tema="palco"] .tagline {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #B8AEA2;
+  max-width: 32ch;
+  margin-top: 1rem;
+}
+
+[data-tema="palco"] .tagline strong {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+[data-tema="palco"] .links {
+  gap: 0.75rem;
+  margin-top: 1.7rem;
+}
+
+[data-tema="palco"] .btn {
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.5rem;
+  padding: 0.9rem 1.3rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  background: #18130E;
+  border: 1px solid rgba(255, 85, 0, 0.4);
+  border-radius: 10px;
+}
+
+[data-tema="palco"] .btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--laranja);
+  background: #1F1812;
+}
+
+[data-tema="palco"] .btn--primario,
+[data-tema="palco"] .form .btn,
+[data-tema="palco"] .agenda-empty .btn {
+  background: var(--laranja);
+  border-color: var(--laranja);
+  color: #1A0D02;
+}
+
+[data-tema="palco"] .btn--primario:hover,
+[data-tema="palco"] .form .btn:hover,
+[data-tema="palco"] .agenda-empty .btn:hover {
+  background: #FF7A33;
+  border-color: #FF7A33;
+  box-shadow: 0 12px 30px rgba(255, 85, 0, 0.35);
+}
+
+[data-tema="palco"] .month h2 {
+  font-family: "Anton", "Arial Black", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--laranja);
+}
+
+[data-tema="palco"] .event-day {
+  font-family: "Anton", "Arial Black", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  color: var(--laranja);
+}
+
+[data-tema="palco"] .foot {
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(184, 174, 162, 0.65);
+  margin-top: 2rem;
+  text-align: center;
 }
