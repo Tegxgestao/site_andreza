@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-tema="noturno">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,49 +15,77 @@
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23EE7420'/%3E%3Ctext x='32' y='47' font-family='Arial, sans-serif' font-weight='900' font-size='40' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 
+  <!-- Tema do dia: os três designs aprovados se revezam, um por dia,
+       virando à meia-noite de Brasília. ?tema=noturno|minimal|palco força um. -->
+  <script>
+    (function () {
+      var temas = ["noturno", "minimal", "palco"];
+      var forcado = new URLSearchParams(location.search).get("tema");
+      if (temas.indexOf(forcado) !== -1) {
+        document.documentElement.dataset.tema = forcado;
+        return;
+      }
+      var dia = Math.floor(Date.now() / 864e5 - 3 / 24); /* dias corridos, UTC-3 */
+      document.documentElement.dataset.tema = temas[((dia % 3) + 3) % 3];
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Todas as famílias dos 3 temas num só CSS; o navegador baixa apenas
+       os arquivos de fonte que o tema ativo realmente usa -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
   <main class="bio">
 
-    <section class="hero-card" aria-label="Apresentação">
-      <div class="hero-text">
-        <p class="eyebrow">Especialista em Liderança e Cultura</p>
-        <h1>Andreza <em>Frontelmo</em></h1>
-        <p class="tagline">Remodelagem <span class="word-glow">comportamental</span> aplicada à liderança para empresas em crescimento.</p>
-      </div>
-    </section>
+    <div class="arco">
+      <img src="img/retrato-andreza.jpg" alt="Retrato de Andreza Frontelmo">
+    </div>
+
+    <div class="hero" aria-hidden="true">
+      <img src="img/capa-andreza.jpg" alt="">
+    </div>
+
+    <header class="titulo">
+      <p class="eyebrow"><span class="eyebrow-texto"><span class="so-minimal">Especialista em </span>Liderança e Cultura</span></p>
+      <h1><span class="nome">Andreza</span> <span class="sobrenome">Frontelmo<span class="ponto">.</span></span></h1>
+    </header>
+
+    <p class="tagline">Remodelagem <strong>comportamental</strong> aplicada à liderança para empresas em crescimento.</p>
 
     <nav class="links" aria-label="Links de contato e serviços">
 
-      <a class="btn" href="completo.html">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c0-3.6 3.2-6 7.5-6s7.5 2.4 7.5 6"/></svg>
-        Me Conheça
-      </a>
-
-      <a class="btn" href="palestras.html">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v10"/><path d="M8.5 6.5C5.5 6.5 3.5 5 3.5 5v9s2 1.5 5 1.5 5-1.5 5-1.5"/><path d="M15.5 6.5c3 0 5-1.5 5-1.5v9s-2 1.5-5 1.5"/><path d="M9 21h6M12 17v4"/></svg>
-        Palestras &amp; Treinamentos
+      <a class="btn btn--primario" href="palestras.html">
+        <svg class="icone" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v10"/><path d="M8.5 6.5C5.5 6.5 3.5 5 3.5 5v9s2 1.5 5 1.5 5-1.5 5-1.5"/><path d="M15.5 6.5c3 0 5-1.5 5-1.5v9s-2 1.5-5 1.5"/><path d="M9 21h6M12 17v4"/></svg>
+        <span class="rotulo">Palestras &amp; Treinamentos</span>
+        <span class="seta" aria-hidden="true">&rarr;</span>
       </a>
 
       <a class="btn" href="mentoria.html">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.7"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
-        Mentoria Pessoal
+        <svg class="icone" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.7"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span class="rotulo">Mentoria Pessoal</span>
+        <span class="seta" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="btn" href="completo.html">
+        <svg class="icone" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c0-3.6 3.2-6 7.5-6s7.5 2.4 7.5 6"/></svg>
+        <span class="rotulo">Me Conheça</span>
+        <span class="seta" aria-hidden="true">&rarr;</span>
       </a>
 
       <a class="btn btn--instagram" href="https://instagram.com/andrezafrontelmo" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
-        Seguir no Instagram
+        <svg class="icone" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        <span class="rotulo">Seguir no Instagram</span>
+        <span class="seta" aria-hidden="true">&rarr;</span>
       </a>
 
     </nav>
 
-    <p class="foot">Escola de Líderes | Palestras e Workshops</p>
+    <p class="foot"><span class="foot-linha">Escola de Líderes · Palestras e Workshops</span><a class="ig" href="https://instagram.com/andrezafrontelmo" target="_blank" rel="noopener">@andrezafrontelmo</a></p>
 
   </main>
 
